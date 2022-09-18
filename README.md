@@ -22,7 +22,7 @@ int main()
 }
 ```
 
-### 1. How to draw triangle:
+### 2. How to draw triangle:
 ```
 #include "res/tech68.hpp"
 
