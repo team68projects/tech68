@@ -8,17 +8,18 @@ tech68 - Is a powerful engine for C++
 
 int main()
 {
-    tech68::init();
+    tech68 app;
+    tech68_window root = app.make_app(640, 480, "tech68 example");
     
-    tech68_window app = tech68::make_app(640, 480, "TEST!");
-    while (!tech68::is_open(app))
+    while (!app.is_open(root))
     {
-        tech68::close_on_key(app);
-        tech68::screen_clear(0.2f, 0.3f, 0.3f, 1.0f);
-
-        tech68::app_event(app);
+        app.close_on_key(root);
+        app.screen_clear(shader, 0.75f, 0.3f, 0.215f);
+        
+        app.app_event(root);
     }
-    tech68::end_app(app);
+    
+    app.end_app(root);
 }
 ```
 
@@ -28,28 +29,49 @@ int main()
 
 int main()
 {
-    tech68::init();
+    tech68 app;
+    tech68_window root = app.make_app(640, 480, "tech68 example");
+    tech68_shaders shader = app.get_shaders();
     
-    tech68_window app = tech68::make_app(640, 480, "TEST!");
-    tech68 shaders shader = tech68::get_shaders();
+    tech68_shape shape = app.triangle();
     
-    tech68_shape triangle tech68::triagnle();
-    
-    while (!tech68::is_open(app))
+    while (!app.is_open(root))
     {
-        tech68::close_on_key(app);
-        tech68::screen_clear(0.2f, 0.3f, 0.3f, 1.0f);
-
-        tech68::draw_triangle(triangle, shader);
-
-        tech68::app_event(app);
+        app.close_on_key(root);
+        app.screen_clear(shader, 0.75f, 0.3f, 0.215f);
+        
+        app.draw(shape, shader);
+        
+        app.app_event(root);
     }
-    tech68::end_app(app);
+    
+    app.end_app(root);
 }
 ```
 
-### 3. How to build game:
+### 3. How to build game (only on arch-linux):
+#### 1. Install tech68-builder.tar.zst...
+Download the package, and install it using:
 ```
-gcc -c res_folder/glad/glad.c
-g++ some_name.cpp -o app.bin glad.o -ldl -lglfw
+sudo pacman -U tech68-builder-x.x-1-x86_64.pkg.tar.zst
+```
+#### 2. Build game using:
+```
+tech68-build
+```
+and tree of project folder, need to looks something like this:
+```
+.
+├── app.cpp
+└── res
+    ├── glad
+    │   ├── glad.c
+    │   ├── glad.h
+    │   └── khrplatform.h
+    ├── fragment.glsl
+    ├── obj.hpp
+    ├── shader.hpp
+    ├── tech68.hpp
+    ├── tech_things.hpp
+    └── vertex.glsl
 ```
