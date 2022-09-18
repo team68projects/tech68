@@ -60,7 +60,6 @@ sudo pacman -U tech68-builder-x.x-1-x86_64.pkg.tar.zst
 Tree of project folder, need to looks something like this:
 ```
 .
-.
 ├── app.cpp
 ├── res
 │   ├── glad
