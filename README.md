@@ -22,7 +22,33 @@ int main()
 }
 ```
 
-### 2. How to build game:
+### 1. How to draw triangle:
+```
+#include "res/tech68.hpp"
+
+int main()
+{
+    tech68::init();
+    
+    tech68_window app = tech68::make_app(640, 480, "TEST!");
+    tech68 shaders shader = tech68::get_shaders();
+    
+    tech68_shape triangle tech68::triagnle();
+    
+    while (!tech68::is_open(app))
+    {
+        tech68::close_on_key(app);
+        tech68::screen_clear(0.2f, 0.3f, 0.3f, 1.0f);
+
+        tech68::draw_triangle(triangle, shader);
+
+        tech68::app_event(app);
+    }
+    tech68::end_app(app);
+}
+```
+
+### 3. How to build game:
 ```
 gcc -c res_folder/glad/glad.c
 g++ some_name.cpp -o app.bin glad.o -ldl -lglfw
