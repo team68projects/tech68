@@ -56,10 +56,8 @@ Download the package, and install it using:
 sudo pacman -U tech68-builder-x.x-1-x86_64.pkg.tar.zst
 ```
 #### 2. Build game using:
-```
-tech68-build
-```
-and tree of project folder, need to looks something like this:
+###### !IMPORTANT!
+Tree of project folder, need to looks something like this:
 ```
 .
 ├── app.cpp
@@ -74,4 +72,9 @@ and tree of project folder, need to looks something like this:
     ├── tech68.hpp
     ├── tech_things.hpp
     └── vertex.glsl
+```
+
+To build game use command
+```
+tech68-build
 ```
