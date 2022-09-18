@@ -1,18 +1,13 @@
 #include "GLFW/glfw3.h"
 #include "iostream"
 
-#define tech68_shaders unsigned int
+typedef GLFWwindow* tech68_window;
 
-#define tech68_shape int
-
-//typedef struct tech68_error
-//{
-//    int error_code;
-//    std::string error_message;
-//    std::string text_error_code;
-//} tech68_erro
-
-#define tech68_window GLFWwindow*
+typedef struct tech68_shape
+{
+    int vao;
+    int count;
+} tech68_shape;
 
 void _framebuffer_size_callback(GLFWwindow* app, int width, int height)
 {
